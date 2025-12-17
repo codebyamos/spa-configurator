@@ -28,6 +28,25 @@ define('SPA_CONFIGURATOR_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('SPA_CONFIGURATOR_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('SPA_CONFIGURATOR_PLUGIN_FILE', __FILE__);
 
+// Include and initialize plugin update checker
+require_once SPA_CONFIGURATOR_PLUGIN_PATH . 'includes/plugin-update-checker/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$spaConfiguratorUpdateChecker = PucFactory::buildUpdateChecker(
+    'https://github.com/codebyamos/spa-configurator',
+    SPA_CONFIGURATOR_PLUGIN_FILE,
+    'spa-configurator'
+);
+
+// Set the branch that contains the stable release.
+$spaConfiguratorUpdateChecker->setBranch('master');
+
+// Optional: If you're using a private repository, specify access token.
+// $spaConfiguratorUpdateChecker->setAuthentication('your-token-here');
+
+// Optional: Enable release assets for downloading zip from GitHub releases.
+// $spaConfiguratorUpdateChecker->getVcsApi()->enableReleaseAssets();
+
 /**
  * Main Spa Configurator Class
  */
