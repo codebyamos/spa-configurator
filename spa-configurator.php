@@ -38,14 +38,14 @@ $spaConfiguratorUpdateChecker = PucFactory::buildUpdateChecker(
     'spa-configurator'
 );
 
-// Set the branch that contains the stable release.
-$spaConfiguratorUpdateChecker->setBranch('master');
-
 // Optional: If you're using a private repository, specify access token.
 // $spaConfiguratorUpdateChecker->setAuthentication('your-token-here');
 
-// Optional: Enable release assets for downloading zip from GitHub releases.
-// $spaConfiguratorUpdateChecker->getVcsApi()->enableReleaseAssets();
+// Enable release assets for downloading zip from GitHub releases.
+$spaConfiguratorUpdateChecker->getVcsApi()->enableReleaseAssets();
+
+// Optional: Set to use specific branch (default is latest release tag).
+// $spaConfiguratorUpdateChecker->setBranch('master');
 
 /**
  * Main Spa Configurator Class
